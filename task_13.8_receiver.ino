@@ -20,6 +20,7 @@ void print_num(uint8_t n) {
 }
 
 void setup() {
+  // put your setup code here, to run once:
   UBRR0H = (BRC >> 8);
   UBRR0L = BRC;
   UCSR0B = (1 << RXEN0) | (1 << TXEN0);
@@ -27,6 +28,7 @@ void setup() {
 }
 
 void loop() {
+  // put your main code here, to run repeatedly:
   if (UCSR0A & (1 << RXC0)) {
     uint8_t plain = decrypt(UDR0, 0xAB);
     print_num(plain);
