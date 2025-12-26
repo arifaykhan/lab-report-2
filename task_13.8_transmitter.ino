@@ -11,6 +11,7 @@ uint8_t encrypt(uint8_t p, uint8_t k) {
 }
 
 void setup() {
+  // put your setup code here, to run once:
   UBRR0H = (BRC >> 8);
   UBRR0L = BRC;
   UCSR0B = (1 << TXEN0);
@@ -18,6 +19,7 @@ void setup() {
 }
 
 void loop() {
+  // put your main code here, to run repeatedly:
   while (!(UCSR0A & (1 << UDRE0)));
   UDR0 = encrypt(counter, 0xAB);
   counter++;
